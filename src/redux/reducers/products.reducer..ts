@@ -18,7 +18,7 @@ const productsReducer: FunctionComponent<any> = (state = defaultState, action: a
     case constants.PRODUCTS_GET_ALL_SUCCEEDED:
       return {
         ...state,
-        items: data.products,
+        items: data,
         loading: false,
       };
     default:
