@@ -18,7 +18,7 @@ const userReducer: FunctionComponent<any> = (state = defaultState, action: any) 
     case constants.USER_ON_GET_ORDER_STATUS_SUCCEEDED:
       return {
         ...state,
-        data: data.order,
+        data,
         loading: false,
       };
     default:

@@ -1,6 +1,8 @@
 export interface IProduct {
-  id: string;
-  title: string;
+  id: number;
+  nombre: string;
+  precio: number;
+  descripcion: string;
 }
 
 export interface IProductDefaultState {

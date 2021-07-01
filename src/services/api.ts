@@ -1,14 +1,15 @@
 import axios from 'axios';
 
-import { API_BASE_URL } from 'configs/configs';
-
 const api = axios.create({
-  baseURL: API_BASE_URL,
+  baseURL: "http://localhost:3080/api/",
 });
 
+let accessToken = 'aaabbbccc'
 function getOptions() {
   const options = {
     headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Access-Control-Allow-Origin": "*",
       'Content-Type': 'application/json',
     },
   };
