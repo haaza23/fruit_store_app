@@ -18,3 +18,11 @@ export const SendButton = styled.div`
   color: white;
   margin-top: 20px;
 `;
+
+export const Text = styled.p`
+  font: normal normal bold 20px/10px 'Arial';
+  margin: 0;
+  padding: 20px 0;
+  border-bottom: ${({ hasBorderBottom }: { hasBorderBottom?: boolean }) =>
+    hasBorderBottom && `1px solid black`};
+`;
