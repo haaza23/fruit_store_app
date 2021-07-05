@@ -1,5 +1,6 @@
 export interface IOrder {
-  precio: null | number;
+  id?: number;
+  precio?: null | number;
   us_telegram: string | null;
   direccion: string;
   estado: string;
@@ -7,10 +8,15 @@ export interface IOrder {
 }
 
 export interface IProductForm {
-  id: number;
+  id_producto: number;
   cantidad: number;
 }
 
 export interface ICheckOrderProps {
   orderId: number;
+}
+
+export interface IUserDefaultState {
+  data: IOrder;
+  loading: boolean;
 }

@@ -4,6 +4,7 @@ import * as constants from 'redux/constants/user.constants';
 
 const defaultState: any = {
   data: null,
+  order: null,
   loading: false,
 };
 
@@ -16,6 +17,7 @@ const userReducer: FunctionComponent<any> = (state = defaultState, action: any) 
         loading: true,
       };
     case constants.USER_ON_GET_ORDER_STATUS_SUCCEEDED:
+    case constants.USER_ON_SUBMIT_ORDER_SUCCEEDED:
       return {
         ...state,
         data,
