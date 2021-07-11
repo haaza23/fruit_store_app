@@ -44,8 +44,8 @@ const ProductsContainer: FunctionComponent = () => {
   
   const placeOrder = (props: ICreateOrderProps) => {
     const direccion = props.address;
-    setOrder({...order, direccion});
-    dispatch(onPlaceOrder(order));
+    setOrder({ direccion, ...order });
+    dispatch(onPlaceOrder(order, direccion));
   }
 
   return (

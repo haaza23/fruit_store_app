@@ -14,7 +14,7 @@ export function* getOrderStatus(action: any) {
 
 export function* placeOrder(action: any) {
   try {
-    const data: unknown = yield call(submitOrder, action.formData);
+    const data: unknown = yield call(submitOrder, action.data);
     yield put({ type: constants.USER_ON_SUBMIT_ORDER_SUCCEEDED, data });
   } catch (error) {
     yield put({ type: constants.USER_ON_SUBMIT_ORDER_FAILED, error });
