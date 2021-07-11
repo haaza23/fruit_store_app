@@ -48,8 +48,15 @@ export const SendButton = styled.div`
   padding: 15px;
   border-radius: 6px;
   font: 20px/10px 'Arial';
-  background: #728eab;
+  background: ${({ disabled }: { disabled?: boolean }) =>
+    disabled ? `gray` : '#724eab'};
   align-self: center;
   cursor: pointer;
   color: white;
+  pointer-events: ${({ disabled }: { disabled?: boolean }) =>
+    disabled && `none`};
+`;
+
+export const Tic = styled.img`
+  width: 10%;
 `;
