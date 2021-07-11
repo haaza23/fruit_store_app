@@ -2,7 +2,7 @@ export interface IOrder {
   id?: number;
   precio?: null | number;
   us_telegram: string | null;
-  direccion: string;
+  direccion?: string;
   estado: string;
   productos: IProductForm[];
 }
@@ -14,6 +14,10 @@ export interface IProductForm {
 
 export interface ICheckOrderProps {
   orderId: number;
+}
+
+export interface ICreateOrderProps {
+  address: string;
 }
 
 export interface IUserDefaultState {

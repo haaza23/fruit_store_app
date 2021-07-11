@@ -1,11 +1,11 @@
-import React, { FunctionComponent, useEffect } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import styled from 'styled-components';
 
 import useTypedSelector from 'hooks/useTypedSelector';
 import ProductsView from 'views/ProductsView';
 import { useDispatch } from 'react-redux';
 import { onGetProducts } from 'redux/actions/products.actions.';
-import { IOrder, IProductForm } from 'types/order.types';
+import { ICreateOrderProps, IOrder, IProductForm } from 'types/order.types';
 import { onPlaceOrder } from 'redux/actions/user.actions';
 
 export const PageContainer = styled.div`
@@ -18,6 +18,7 @@ const ProductsContainer: FunctionComponent = () => {
   const orderRecieved = useTypedSelector((state) => state.user.data);
   const dispatch = useDispatch();
   let productsOrder: IProductForm[] = [];
+  const [order, setOrder] = useState<IOrder>({us_telegram: null, estado: '', productos: [], direccion: ''});
 
   const addToCart = (productId: number, quantity: number) => {
     const product: IProductForm = {
@@ -32,20 +33,32 @@ const ProductsContainer: FunctionComponent = () => {
     productsOrder = [];
   }, [dispatch]);
 
-  const onSubmit = () => {
+  const onCreateCart = () => {
     const order: IOrder = {
       us_telegram: "test",
       estado: "en preparacion",
       productos: productsOrder,
-      direccion: "calle falsa 123",
     }
+    setOrder(order);
+  }
+  
+  const placeOrder = (props: ICreateOrderProps) => {
+    const direccion = props.address;
+    setOrder({...order, direccion});
     dispatch(onPlaceOrder(order));
   }
 
-  console.log('ODER', orderRecieved);
   return (
     <PageContainer>
-      {products && <ProductsView products={products} addToCart={addToCart} placeOrder={onSubmit} order={orderRecieved} />}
+      {products && 
+        <ProductsView 
+          products={products} 
+          addToCart={addToCart} 
+          createCart={onCreateCart} 
+          order={orderRecieved} 
+          onSubmit={placeOrder}
+        />
+      }
     </PageContainer>
   );
 };
