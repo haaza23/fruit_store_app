@@ -1,8 +1,8 @@
 import { get, post } from 'services/api';
 import { ICheckOrderProps } from 'types/order.types';
 
-export async function submitOrder(formData: any): Promise<any> {
-  const response = await post('pedido', formData);
+export async function submitOrder(data: any): Promise<any> {
+  const response = await post('pedido', data);
   return response;
 }
 

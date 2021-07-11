@@ -4,7 +4,7 @@ import { Form, Field } from 'react-final-form'
 import { IProduct } from 'types/products.types';
 
 import { IHomeProps } from './types';
-import { Container, SendButton, Text } from './styles';
+import { Container, SendButton, Text, OrderButton } from './styles';
 import Product from './components/product';
 
 const ProductsView: FunctionComponent<IHomeProps> = (props: IHomeProps) => {
@@ -29,17 +29,17 @@ const ProductsView: FunctionComponent<IHomeProps> = (props: IHomeProps) => {
             onSubmit={onSubmit}
             render={({ handleSubmit, form, submitting, pristine, values }) => (
               <form onSubmit={handleSubmit}>
-                <div style={{display: 'flex', flexDirection: 'column', paddingTop: '20px', marginBottom: '20px'}}>
-                  <label>Direccion</label>
+                <div style={{display: 'flex', flexDirection: 'column', paddingTop: '20px', marginBottom: '0px'}}>
+                  <Text>Direccion</Text>
                   <Field
                     name="address"
                     component="input"
                     type="text"
                   />
                 </div>
-                <button type="submit" disabled={submitting || pristine}>
+                <OrderButton type="submit" disabled={submitting || pristine}>
                   Comprar
-                </button>
+                </OrderButton>
               </form>
             )}
           />
